@@ -5,11 +5,11 @@ exports.config = {
     // The address of a running selenium server.
     // seleniumAddress: 'http://localhost:4444/wd/hub',
 
-    seleniumServerJar: './node_modules/selenium-standalone/.selenium/selenium-server/2.47.1-server.jar',
-
+    seleniumServerJar: './node_modules/selenium-standalone/.selenium/selenium-server/2.50.1-server.jar',
+    seleniumPort: null,
     // Spec patterns are relative to the location of this config.
     specs: [
-        './e2e/**/{,*/}*_spec.js'
+        './e2e/**/*_spec.js'
     ],
 
     capabilities: {
@@ -28,11 +28,7 @@ exports.config = {
 
     // Test Suites
     suites: {
-        sign_in: './e2e/sign_in/*_spec.js',
-        dashboard: './e2e/dashboard/{,*/}*_spec.js',
-        main: './e2e/main/{,*/}*_spec.js',
-        sign_up: './e2e/sign_up/{,*/}*_spec.js',
-        onboarding: './e2e/onboarding/{,*/}*_spec.js'
+        main: './e2e/main/{,*/}*_spec.js'
     },
 
     // A base URL for your application under test. Calls to protractor.get()

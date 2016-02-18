@@ -22,7 +22,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    test: 'test'
   };
 
   // Define the configuration for all the tasks
@@ -560,13 +561,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('test-e2e', [
-    'clean:server',
-    'wiredep',
-    'concurrent:test',
-    'sass:dist',
-    'autoprefixer:dist',
     'connect:test',
-    'karma:unit'
+    'protractor:e2e'
   ]);
 
   grunt.registerTask('build', [

@@ -6,7 +6,7 @@ exports.config = {
     // seleniumAddress: 'http://localhost:4444/wd/hub',
     // chromeDriver: './node_modules/protractor/selenium/chromedriver',
 
-    seleniumServerJar: './node_modules/selenium-standalone/.selenium/selenium-server/2.47.1-server.jar',
+    seleniumServerJar: './node_modules/selenium-standalone/.selenium/selenium-server/2.50.1-server.jar',
 
     // Spec patterns are relative to the location of this config.
     specs: [
@@ -22,7 +22,7 @@ exports.config = {
 
     // A base URL for your application under test. Calls to protractor.get()
     // with relative paths will be prepended with this.
-    baseUrl: 'http://ip:8080/mycontext/',
+    baseUrl: 'http://localhost:8080/',
 
     framework: 'jasmine2',
 
