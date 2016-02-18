@@ -22,7 +22,7 @@ exports.config = {
 
     // A base URL for your application under test. Calls to protractor.get()
     // with relative paths will be prepended with this.
-    baseUrl: 'http://dx137:8080/falcon/',
+    baseUrl: 'http://ip:8080/mycontext/',
 
     framework: 'jasmine2',
 

@@ -58,10 +58,8 @@
     "jscs": "jscs ./app/scripts --fix",
     "jshint": "grunt jshint",
     "lint": "npm run eslint && npm run jscs",
-    "postinstall": "./node_modules/selenium-standalone/bin/selenium-standalone install",
     "scsslint": "scss-lint -c .scss-lint.yml",
     "test": "grunt test",
-    "test-api": "newman -c 'Falcon_API.json.postman_collection' -e 'Falcon_API_MOCK.postman_environment'",
     "test-e2e": "protractor protractor.ci.conf.js",
     "validate": "npm ls"
   }
