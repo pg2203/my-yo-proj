@@ -117,6 +117,21 @@ module.exports = function (grunt) {
         }
       }
     },
+    // Automatically sort and injects AngularJS application files
+    // depending on module definitions and usage
+    angularFileLoader: {
+      options: {
+        scripts: [
+          '<%= yeoman.app %>/scripts/*.js',
+          '<%= yeoman.app %>/scripts/**/*.js',
+          '!<%= yeoman.app %>/scripts/**/*.spec.js',
+          '!<%= yeoman.app %>/scripts/**/*.spec.js'
+        ]
+      },
+      default_options: {
+        src: ['<%= yeoman.app %>/index.html']
+      }
+    },
 
     // Make sure there are no obvious mistakes
     jshint: {
@@ -137,24 +152,6 @@ module.exports = function (grunt) {
         src: ['test/spec/{,*/}*.js']
       }
     },
-
-    // Make sure code styles are up to par
-    jscs: {
-      options: {
-        config: '.jscsrc',
-        verbose: true
-      },
-      all: {
-        src: [
-          'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
-        ]
-      },
-      test: {
-        src: ['test/spec/{,*/}*.js']
-      }
-    },
-
     // Empties folders to start fresh
     clean: {
       dist: {
@@ -169,13 +166,10 @@ module.exports = function (grunt) {
       },
       server: '.tmp'
     },
-
-    // Add vendor prefixed styles
-    postcss: {
+// Add vendor prefixed styles
+    autoprefixer: {
       options: {
-        processors: [
-          require('autoprefixer-core')({browsers: ['last 1 version']})
-        ]
+        browsers: ['last 1 version']
       },
       server: {
         options: {
@@ -197,7 +191,6 @@ module.exports = function (grunt) {
         }]
       }
     },
-
     // Automatically inject Bower components into the app
     wiredep: {
       app: {
@@ -264,44 +257,6 @@ module.exports = function (grunt) {
           dest: '.tmp/styles',
           ext: '.css'
         }]
-      }
-    },
-    // Add vendor prefixed styles
-    autoprefixer: {
-      options: {
-        browsers: ['last 1 version']
-      },
-      server: {
-        options: {
-          map: true
-        },
-        files: [{
-          expand: true,
-          cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
-          dest: '.tmp/styles/'
-        }]
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
-          dest: '.tmp/styles/'
-        }]
-      }
-    },
-    // Automatically sort and injects AngularJS application files
-    // depending on module definitions and usage
-    angularFileLoader: {
-      options: {
-        scripts: [
-          '<%= yeoman.app %>/scripts/*.js',
-          '<%= yeoman.app %>/scripts/**/*.js'
-        ]
-      },
-      default_options: {
-        src: ['<%= yeoman.app %>/index.html']
       }
     },
     // Compiles Sass to CSS and generates necessary files if requested
@@ -598,7 +553,8 @@ module.exports = function (grunt) {
     'wiredep',
     'angularFileLoader',
     'concurrent:test',
-    'postcss',
+    'sass:dist',
+    'autoprefixer:dist',
     'connect:test',
     'karma:unit'
   ]);
@@ -618,7 +574,6 @@ module.exports = function (grunt) {
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
-    'postcss',
     'ngtemplates',
     'concat',
     'ngAnnotate',
@@ -633,7 +588,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'newer:jscs',
     'test',
     'build'
   ]);
