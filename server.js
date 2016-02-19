@@ -22,7 +22,7 @@ app.use(function(req, res, next) {
     // * auth array exists
     // * first value matches the expected user
     // * second value the expected password
-    if (!auth || auth[0] !== 'project-falcon' || auth[1] !== 'bmo') {
+    if (!auth || auth[0] !== 'user' || auth[1] !== 'pwd') {
         // any of the tests failed
         // send an Basic Auth request (HTTP Code: 401 Unauthorized)
         res.statusCode = 401;
@@ -43,6 +43,5 @@ app.use('/api', function(req, res) {
 });
 
 app.use(gzippo.staticGzip("" + __dirname ));
-
 
 app.listen(process.env.VCAP_APP_PORT || 5000);

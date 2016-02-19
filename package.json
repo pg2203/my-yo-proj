@@ -4,8 +4,8 @@
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "grunt": "^0.4.5",
-    "grunt-angular-templates": "^0.5.7",
     "grunt-angular-file-loader": "^1.1.5",
+    "grunt-angular-templates": "^0.5.7",
     "grunt-autoprefixer": "^3.0.0",
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-clean": "^0.6.0",
@@ -31,6 +31,7 @@
     "grunt-svgmin": "^2.0.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
+    "istanbul": "^0.3.22",
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "^1.0.0",
     "karma": "^0.13.9",
@@ -39,16 +40,17 @@
     "karma-phantomjs2-launcher": "^0.3.2",
     "karma-spec-reporter": "0.0.23",
     "karma-threshold-reporter": "^0.1.15",
-    "protractor": "^3.0.0",
+    "load-grunt-tasks": "^3.1.0",
+    "protractor": "^3.1.1",
     "protractor-jasmine2-html-reporter": "0.0.5",
-    "time-grunt": "^1.0.0",
     "selenium-standalone": "^4.7.0",
-    "load-grunt-tasks": "^3.1.0"
+    "time-grunt": "^1.0.0"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
+    "check-coverage": "node ./node_modules/istanbul/lib/cli.js check-coverage --statement 75 --branch 60 --function 65",
     "check-dependencies": "check-dependencies --verbose --package-manager bower --scope-list dependencies",
     "check-dev-dependencies": "check-dependencies --verbose --package-manager bower --scope-list devDependencies",
     "check-security": "npm install -g nsp && nsp check",
@@ -61,7 +63,7 @@
     "postinstall": "node ./node_modules/selenium-standalone/bin/selenium-standalone install",
     "scsslint": "scss-lint -c .scss-lint.yml",
     "test": "grunt test",
-    "test-e2e": "protractor protractor.ci.conf.js",
     "validate": "npm ls"
-  }
+  },
+  "dependencies": {}
 }
