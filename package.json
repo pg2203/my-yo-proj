@@ -65,5 +65,10 @@
     "test": "grunt test",
     "validate": "npm ls"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "pre-commit": [
+    "eslint",
+    "jscs",
+    "test"
+  ]
 }
